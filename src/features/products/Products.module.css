@@ -1,8 +1,14 @@
+@media only screen and (max-width: 1000px) {
+  .row {
+    width: 95vw !important;
+  }
+}
+
 .row {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 1000px;
+  width: 70vw;
 }
 
 .row > button {
@@ -45,8 +51,6 @@
   width: 100%;
   text-align: center;
   margin-right: 4px;
-  min-height: 150px;
-  min-width: 800px;
 }
 
 .table {

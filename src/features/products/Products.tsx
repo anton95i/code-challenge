@@ -13,9 +13,17 @@ export function Products() {
   const newProducts = String(newProductsValue) || "";
 
   return (
-    <div>
+    <div className={styles.main}>
       <div className={styles.row}>
-        <textarea className={styles.textarea} aria-label="Insert products" value={newProductsValue} onChange={(e) => setNewProducts(e.target.value)} placeholder="type here to add products eg (apple, 2, banana, 4.2, ...)" />
+        <textarea
+          className={styles.textarea}
+          aria-label="Insert products"
+          value={newProductsValue}
+          onChange={(e) => setNewProducts(e.target.value)}
+          placeholder="type here to add products eg (apple, 2, banana, 4.2, ...)"
+        />
+      </div>
+      <div className={styles.row}>
         <button
           className={styles.button}
           aria-label="Submit"
@@ -28,23 +36,24 @@ export function Products() {
         </button>
       </div>
       {!(products.length == 0) && (
-      <div className={styles.row}>
-        <table
-        className={styles.table}>
-          <tr>
-            <th>name</th>
-            <th>price</th>
-            <th>action</th>
-          </tr>
-          {products.map((product) => (
+        <div className={styles.row}>
+          <table className={styles.table}>
             <tr>
-              <td>{product.name}</td>
-              <td>{product.price.toFixed(2)}</td>
-              <td><button onClick={() => dispatch(addToCart(product.id + "," + product.name + "," + product.price))}>Add To Cart</button></td>
+              <th>name</th>
+              <th>price</th>
+              <th>action</th>
             </tr>
-          ))}
-        </table>
-      </div>
+            {products.map((product) => (
+              <tr>
+                <td>{product.name}</td>
+                <td>{product.price.toFixed(2)}</td>
+                <td>
+                  <button onClick={() => dispatch(addToCart(product.id + "," + product.name + "," + product.price))}>Add To Cart</button>
+                </td>
+              </tr>
+            ))}
+          </table>
+        </div>
       )}
     </div>
   );
